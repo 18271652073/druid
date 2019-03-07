@@ -17,5 +17,6 @@ public class DruidApplication {
 		String address="http://localhost:8989/webservcie";
 		Endpoint.publish(address,new WebServiceImpl());
 		System.out.println("发布webservice！");
+		String url="http://localhost:8989/webservcie?wsdl";
 	}
 }

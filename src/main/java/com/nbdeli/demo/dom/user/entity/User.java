@@ -1,11 +1,15 @@
 package com.nbdeli.demo.dom.user.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
  * user
  * @author 
  */
+//@XmlAccessorType (XmlAccessType.FIELD)
+//@XmlAccessorType (XmlAccessType.PROPERTY)
+@XmlRootElement(name = "user")
 public class User implements Serializable {
     private Integer uid;
 
