@@ -27,7 +27,8 @@ public class TestCommensio {
             System.out.println("第 " + i + " 行数据为：\t" + str);
         }
         i=9;//获取指定行
-        System.out.println("第 " + i + " 行数据为："+lines.get(i-1));
+        System.out.println("第 " + i + " 行数据为：："+lines.get(i-1));
+        System.out.println("第 " + i + " 行数据为：："+lines.get(i-1));
     }
 
     /**
