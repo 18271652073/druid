@@ -1,11 +1,10 @@
 package com.nbdeli.demo;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = {"com.deli.demo.dom.**"})
+//@MapperScan(basePackages = {"com.nbdeli.demo.dom.user.mapper.**"})
 public class DruidApplication {
 
 	public static void main(String[] args) {

@@ -1,6 +1,5 @@
 package com.nbdeli.demo.controller;
 
-import com.deli.demo.dom.user.Gitstatistics;
 import com.nbdeli.demo.config.Color;
 import com.nbdeli.demo.config.PoolCache;
 import com.nbdeli.demo.config.ScanPool;
@@ -8,9 +7,7 @@ import com.nbdeli.demo.dom.usertest.entity.UserDo;
 import com.nbdeli.demo.service.TestServcie;
 import com.nbdeli.demo.service.UserDao;
 import com.nbdeli.demo.service.UserDetail;
-import com.nbdeli.demo.util.DateUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author DuKaixiang
@@ -69,55 +67,55 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
-    public String test() throws IOException {
-        String msg = "error!";
-//        int lastLine=testServcie.getLastLine();//获取上次的行数
-        int lastLine = 0;
-        File file = new File("E:\\count.txt");
-        List<String> lines = FileUtils.readLines(file);
-        String applicationStr = lines.get(lastLine + 2);
-        String timeStr = lines.get(lastLine + 1);
-        applicationStr = applicationStr.substring(12);
-        timeStr = timeStr.substring(5);
-        int i = lastLine + 3;
-        while (i < lines.size()) {
-            String record = lines.get(i);
-            String[] group = record.split(",");
-            if (group.length == 4) {
-                Gitstatistics gitStatistics = new Gitstatistics();
-                String[] attribute = group[0].split(":");
-                gitStatistics.setName(attribute[1]);
-                String[] attribute1 = group[1].split(":");
-                gitStatistics.setAdded(0);
-                if (attribute1.length == 2) {
-                    gitStatistics.setAdded(Integer.valueOf(attribute1[1]));
-                }
-                String[] attribute2 = group[2].split(":");
-                gitStatistics.setRemoved(0);
-                if (attribute2.length == 2) {
-                    gitStatistics.setRemoved(Integer.valueOf(attribute2[1]));
-                }
-                String[] attribute3 = group[3].split(":");
-                gitStatistics.setRemoved(0);
-                if (attribute3.length == 2) {
-                    gitStatistics.setUpdated(Integer.valueOf(attribute3[1]));
-                }
-                gitStatistics.setApplication(applicationStr);
-                gitStatistics.setTime(DateUtils.str2Date(timeStr, "yyyy-MM-dd HH:mm:ss"));
-                gitStatistics.setStatus("A");
-                gitStatistics.setAddno("dkx");
-                Date now = new Date();
-                gitStatistics.setAddtime(now);
-                gitStatistics.setUpdateno("dkx");
-                gitStatistics.setUpdatetime(now);
-                System.out.println(gitStatistics);
-                testServcie.insertGitStatistics(gitStatistics);
-            }
-            i++;
-        }
-        return msg;
-    }
+//    @RequestMapping(value = "/test",method = RequestMethod.GET)
+//    public String test() throws IOException {
+//        String msg = "error!";
+////        int lastLine=testServcie.getLastLine();//获取上次的行数
+//        int lastLine = 0;
+//        File file = new File("E:\\count.txt");
+//        List<String> lines = FileUtils.readLines(file);
+//        String applicationStr = lines.get(lastLine + 2);
+//        String timeStr = lines.get(lastLine + 1);
+//        applicationStr = applicationStr.substring(12);
+//        timeStr = timeStr.substring(5);
+//        int i = lastLine + 3;
+//        while (i < lines.size()) {
+//            String record = lines.get(i);
+//            String[] group = record.split(",");
+//            if (group.length == 4) {
+//                Gitstatistics gitStatistics = new Gitstatistics();
+//                String[] attribute = group[0].split(":");
+//                gitStatistics.setName(attribute[1]);
+//                String[] attribute1 = group[1].split(":");
+//                gitStatistics.setAdded(0);
+//                if (attribute1.length == 2) {
+//                    gitStatistics.setAdded(Integer.valueOf(attribute1[1]));
+//                }
+//                String[] attribute2 = group[2].split(":");
+//                gitStatistics.setRemoved(0);
+//                if (attribute2.length == 2) {
+//                    gitStatistics.setRemoved(Integer.valueOf(attribute2[1]));
+//                }
+//                String[] attribute3 = group[3].split(":");
+//                gitStatistics.setRemoved(0);
+//                if (attribute3.length == 2) {
+//                    gitStatistics.setUpdated(Integer.valueOf(attribute3[1]));
+//                }
+//                gitStatistics.setApplication(applicationStr);
+//                gitStatistics.setTime(DateUtils.str2Date(timeStr, "yyyy-MM-dd HH:mm:ss"));
+//                gitStatistics.setStatus("A");
+//                gitStatistics.setAddno("dkx");
+//                Date now = new Date();
+//                gitStatistics.setAddtime(now);
+//                gitStatistics.setUpdateno("dkx");
+//                gitStatistics.setUpdatetime(now);
+//                System.out.println(gitStatistics);
+//                testServcie.insertGitStatistics(gitStatistics);
+//            }
+//            i++;
+//        }
+//        return msg;
+//    }
 
 //    public static void main(String[] args) throws IOException {
 //       int lastLine = 0;
