@@ -1,6 +1,8 @@
 package com.nbdeli.demo.util;
 
 import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Administrator
@@ -32,6 +34,16 @@ public class Test {
         // System.out.println(s);
 //        System.out.println(getDateAddOne("2018-02-28"));
 //        System.out.println(getMonthFirstDay(2018,1));
+
+            Map<String,Object> map1=new HashMap<String,Object>();
+            Map<String,Object> map2=new HashMap<String,Object>();
+
+            map1.put("a", "Hello");
+            map2.put("b", "world");
+
+            map1.putAll(map2);
+            System.out.println(map1);
+
     }
 }
 

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbdeli.demo.dom.blob.mapper.SystemConstantMapper">
+  <resultMap id="BaseResultMap" type="com.nbdeli.demo.dom.blob.entity.SystemConstant">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="constant_type" jdbcType="VARCHAR" property="constantType" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="constant_key" jdbcType="VARCHAR" property="constantKey" />
+    <result column="constant_value" jdbcType="VARCHAR" property="constantValue" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="add_no" jdbcType="VARCHAR" property="addNo" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_no" jdbcType="VARCHAR" property="updateNo" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.nbdeli.demo.dom.blob.entity.SystemConstant">
+    <result column="constant_name" jdbcType="LONGVARBINARY" property="constantName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, constant_type, type_name, constant_key, constant_value, status, add_no, add_time, 
+    update_no, update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    constant_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_system_constant
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_system_constant
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nbdeli.demo.dom.blob.entity.SystemConstant">
+    insert into t_system_constant (id, constant_type, type_name, 
+      constant_key, constant_value, status, 
+      add_no, add_time, update_no, 
+      update_time, constant_name)
+    values (#{id,jdbcType=INTEGER}, #{constantType,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR}, 
+      #{constantKey,jdbcType=VARCHAR}, #{constantValue,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{addNo,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{updateNo,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{constantName,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nbdeli.demo.dom.blob.entity.SystemConstant">
+    insert into t_system_constant
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="constantType != null">
+        constant_type,
+      </if>
+      <if test="typeName != null">
+        type_name,
+      </if>
+      <if test="constantKey != null">
+        constant_key,
+      </if>
+      <if test="constantValue != null">
+        constant_value,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="addNo != null">
+        add_no,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateNo != null">
+        update_no,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="constantName != null">
+        constant_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="constantType != null">
+        #{constantType,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="constantKey != null">
+        #{constantKey,jdbcType=VARCHAR},
+      </if>
+      <if test="constantValue != null">
+        #{constantValue,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="addNo != null">
+        #{addNo,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateNo != null">
+        #{updateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="constantName != null">
+        #{constantName,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nbdeli.demo.dom.blob.entity.SystemConstant">
+    update t_system_constant
+    <set>
+      <if test="constantType != null">
+        constant_type = #{constantType,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null">
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="constantKey != null">
+        constant_key = #{constantKey,jdbcType=VARCHAR},
+      </if>
+      <if test="constantValue != null">
+        constant_value = #{constantValue,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="addNo != null">
+        add_no = #{addNo,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateNo != null">
+        update_no = #{updateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="constantName != null">
+        constant_name = #{constantName,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.nbdeli.demo.dom.blob.entity.SystemConstant">
+    update t_system_constant
+    set constant_type = #{constantType,jdbcType=VARCHAR},
+      type_name = #{typeName,jdbcType=VARCHAR},
+      constant_key = #{constantKey,jdbcType=VARCHAR},
+      constant_value = #{constantValue,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      add_no = #{addNo,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_no = #{updateNo,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      constant_name = #{constantName,jdbcType=LONGVARBINARY}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nbdeli.demo.dom.blob.entity.SystemConstant">
+    update t_system_constant
+    set constant_type = #{constantType,jdbcType=VARCHAR},
+      type_name = #{typeName,jdbcType=VARCHAR},
+      constant_key = #{constantKey,jdbcType=VARCHAR},
+      constant_value = #{constantValue,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      add_no = #{addNo,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_no = #{updateNo,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

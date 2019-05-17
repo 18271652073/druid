@@ -259,8 +259,8 @@ public class DateUtils {
         // System.out.println(days);
         // String s = DateUtils.str2DateFormat("1468466182000", "yyyy-MM-dd");
         // System.out.println(s);
-//        System.out.println(getDateAddOne("2018-02-28"));
-//        System.out.println(getMonthFirstDay(2018,1));
+        System.out.println(getDateAddOne("2018-02-28"));
+        System.out.println(getMonthFirstDay(2018,1));
     }
 
     public static int formatYmdhmsm(Date date) {

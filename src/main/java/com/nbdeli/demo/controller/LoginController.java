@@ -4,18 +4,27 @@ import com.nbdeli.demo.config.Color;
 import com.nbdeli.demo.config.PoolCache;
 import com.nbdeli.demo.config.ScanPool;
 import com.nbdeli.demo.dom.usertest.entity.UserDo;
+import com.nbdeli.demo.service.SystemConstantService;
 import com.nbdeli.demo.service.TestServcie;
 import com.nbdeli.demo.service.UserDao;
 import com.nbdeli.demo.service.UserDetail;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.axis.client.Call;
+import org.apache.axis.client.Service;
+import org.apache.axis.handlers.soap.SOAPService;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.rpc.ServiceException;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,13 +36,15 @@ import java.util.UUID;
  */
 @Slf4j
 @RestController
-public class LoginController {
+public class LoginController extends BaseController{
     //    @Autowired
 //    private UserService userService;
     @Autowired
     private UserDao userDao;
     @Autowired
     private TestServcie testServcie;
+    @Autowired
+    private SystemConstantService systemConstantService;
 
     @RequestMapping(value = "/selectUser", method = RequestMethod.GET)
     public String selectUser(@RequestParam(value = "id") Integer id) {
@@ -163,4 +174,56 @@ public class LoginController {
 //        }
 //    }
 
+
+    @RequestMapping(value = "/getXML", method = RequestMethod.POST)
+    public String getXML(@RequestParam(value = "xml") String xml) throws ServiceException, MalformedURLException, RemoteException {
+        SOAPService soap = new SOAPService();
+        soap.setName("transOnlineOrder");  //此处webservice的名字
+        Service service = new Service();
+        Call call = (Call) service.createCall();
+        String endpoint = "http://61.190.39.14/services/transOnlineOrder?wsdl";
+        call.setTargetEndpointAddress(new java.net.URL(endpoint));
+        call.setOperationName("transOnlineOrder");
+        call.addParameter("str", org.apache.axis.encoding.XMLType.XSD_STRING, javax.xml.rpc.ParameterMode.IN);
+        call.setReturnType(org.apache.axis.encoding.XMLType.XSD_STRING);
+        call.setSOAPService(soap);
+        call.setUseSOAPAction(true);
+        System.out.println(xml);
+        String rtnxml = (String) call.invoke(new Object[]{xml});
+        System.out.println("result:11111111111111");
+        System.out.println(rtnxml);
+        return rtnxml;
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/captcha.img")
+    public void getCaptcha(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String sessionId=request.getSession().getId();
+        response.setHeader("Cache-Control", "no-store, no-cache");
+        response.setContentType("image/jpeg");
+        BufferedImage image=systemConstantService.getKaptcha(sessionId);
+        ServletOutputStream out=response.getOutputStream();
+        ImageIO.write(image, "jpg", out);
+        IOUtils.closeQuietly(out);
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/getExcel")
+    public void getExcel(HttpServletRequest request, HttpServletResponse response) throws IOException {
+            prepareDownLoadResponse(response, "application/x-xls", "账号信息.xlsx");
+//            ByteArrayOutputStream ostream = null;
+            ServletOutputStream stream = null;
+            try {
+//                ostream = new ByteArrayOutputStream();
+//                workbook.write(ostream);
+                stream = response.getOutputStream();
+                stream.write(systemConstantService.getExcel());
+                stream.flush();
+            } catch (IOException e) {
+                log.error("账号信息条件导出出错", e);
+            } finally {
+                stream.close();
+//                ostream.close();
+            }
+    }
 }
