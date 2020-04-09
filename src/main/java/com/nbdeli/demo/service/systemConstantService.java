@@ -25,13 +25,13 @@ public class SystemConstantService {
     @Autowired
     private SystemConstantMapper systemConstantMapper;
 
-    public byte[] selectBlob(int id){
+    public byte[] selectBlob(int id) {
         return systemConstantMapper.selectByPrimaryKey(id).getConstantName();
     }
 
     public int insertEntity() throws IOException {
-        SystemConstant systemConstant=new SystemConstant();
-        FileInputStream fileInputStream=new FileInputStream("C:\\Users\\Administrator\\Pictures\\Saved Pictures\\2018届大学生转正名单（本科）.xlsx");
+        SystemConstant systemConstant = new SystemConstant();
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\Administrator\\Pictures\\Saved Pictures\\2018届大学生转正名单（本科）.xlsx");
         systemConstant.setConstantName(FileCopyUtils.copyToByteArray(fileInputStream));
         systemConstant.setStatus("A");
         systemConstant.setAddNo("11");

@@ -7,12 +7,8 @@ import java.io.StringReader;
 import java.io.StringWriter;
 
 
-
-
-
 /**
  * Jaxb工具类 xml和java类相互转换
- *
  */
 public class JaxbXmlUtil {
 
@@ -32,7 +28,7 @@ public class JaxbXmlUtil {
     /**
      * pojo转换成xml
      *
-     * @param obj 待转化的对象
+     * @param obj      待转化的对象
      * @param encoding 编码
      * @return xml格式字符串
      * @throws Exception JAXBException
@@ -57,7 +53,7 @@ public class JaxbXmlUtil {
      * xml转换成JavaBean
      *
      * @param xml xml格式字符串
-     * @param t 待转化的对象
+     * @param t   待转化的对象
      * @return 转化后的对象
      * @throws Exception JAXBException
      */

@@ -5,7 +5,8 @@ import java.io.Serializable;
 
 /**
  * user
- * @author 
+ *
+ * @author
  */
 //@XmlAccessorType (XmlAccessType.FIELD)
 //@XmlAccessorType (XmlAccessType.PROPERTY)

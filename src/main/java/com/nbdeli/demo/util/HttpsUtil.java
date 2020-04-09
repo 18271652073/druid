@@ -26,7 +26,7 @@ public class HttpsUtil {
     }
 
     public static String doPost(String url, String params, String charset) throws Exception {
-            String ctype = "application/json;charset=" + charset;
+        String ctype = "application/json;charset=" + charset;
         byte[] content = {};
         if (params != null) {
             content = params.getBytes(charset);
@@ -42,7 +42,7 @@ public class HttpsUtil {
         try {
             try {
                 SSLContext ctx = SSLContext.getInstance("TLS");
-                ctx.init(new KeyManager[0], new TrustManager[] { new DefaultTrustManager() }, new SecureRandom());
+                ctx.init(new KeyManager[0], new TrustManager[]{new DefaultTrustManager()}, new SecureRandom());
                 SSLContext.setDefault(ctx);
 
                 conn = getConnection(new URL(url), method, ctype);
@@ -88,7 +88,7 @@ public class HttpsUtil {
             }
             try {
                 SSLContext ctx = SSLContext.getInstance("TLS");
-                ctx.init(new KeyManager[0], new TrustManager[] { new DefaultTrustManager() }, new SecureRandom());
+                ctx.init(new KeyManager[0], new TrustManager[]{new DefaultTrustManager()}, new SecureRandom());
                 SSLContext.setDefault(ctx);
                 conn = getConnection(new URL(url), method, "application/json;charset=" + charset);
                 conn.setHostnameVerifier(new HostnameVerifier() {
@@ -137,8 +137,8 @@ public class HttpsUtil {
     }
 
     private static HttpsURLConnection getConnection(URL url, String method, String ctype) throws IOException {
-    	url= new URL(null, url.toString(), new sun.net.www.protocol.https.Handler());
-    	HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+        url = new URL(null, url.toString(), new sun.net.www.protocol.https.Handler());
+        HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
         conn.setRequestMethod(method);
         conn.setDoInput(true);
         conn.setDoOutput(true);

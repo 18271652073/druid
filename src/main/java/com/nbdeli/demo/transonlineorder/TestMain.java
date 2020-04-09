@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  */
 public class TestMain {
     public static void main(String[] args) {
-        JSONObject node=new JSONObject();
+        JSONObject node = new JSONObject();
         String param = "<?xml version='1.0' encoding='UTF-8'?>" +
                 "<dataset>  " +
                 "<head>    " +
@@ -32,10 +32,10 @@ public class TestMain {
                 "</data>      " +
                 "</datalist>" +
                 "</dataset>";
-        node.put("str",param);
+        node.put("str", param);
 //        System.out.println(node.toString());
 
-        String xml="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<m:transOnlineOrder xmlns:m=\"http://61.190.39.14/\"><str>&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\n" +
                 "&lt;dataset&gt;\n" +
                 "  &lt;head&gt;\n" +

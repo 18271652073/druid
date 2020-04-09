@@ -43,7 +43,7 @@ public class Unicode {
 //        System.out.println(unicodeToCn(xml));
         System.out.println("11111111");
         System.out.println(xml);
-        System.out.println(xml.replace("&lt;","<").replace("&gt;",">"));
+        System.out.println(xml.replace("&lt;", "<").replace("&gt;", ">"));
 //        System.out.println(unicodeToString(xml));
 //        System.out.println("11111111");
 //        System.out.println(getUnicode(xml));

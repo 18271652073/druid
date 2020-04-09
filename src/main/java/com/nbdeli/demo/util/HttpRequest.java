@@ -31,7 +31,7 @@ public class HttpRequest {
     }
 
     public synchronized static String postData(String url, Map<String, String> params,
-        String codePage) throws Exception {
+                                               String codePage) throws Exception {
 
         final HttpClient httpClient = new HttpClient();
         httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(25 * 1000);
@@ -59,7 +59,7 @@ public class HttpRequest {
         while (it.hasNext()) {
             Entry<String, String> entry = (Entry<String, String>) it.next();
             nameValueList
-                .add(new NameValuePair((String) entry.getKey(), (String) entry.getValue()));
+                    .add(new NameValuePair((String) entry.getKey(), (String) entry.getValue()));
         }
         return nameValueList.toArray(new NameValuePair[nameValueList.size()]);
 

@@ -8,14 +8,14 @@ import javax.jws.WebParam;
  */
 @javax.jws.WebService
 public class WebServiceImpl implements WebService {
-//    @Override
+    //    @Override
 //    public String sayHello(String xml) {
 //        System.out.println("hihihi");
 //        return xml;
 //    }
     @Override
-    public String sayHello(@WebParam(name = "name") String name,@WebParam(name = "passWord") String passWord) {
-        System.out.println("hihihi:"+name+":"+passWord);
-        return name+":"+passWord;
+    public String sayHello(@WebParam(name = "name") String name, @WebParam(name = "passWord") String passWord) {
+        System.out.println("hihihi:" + name + ":" + passWord);
+        return name + ":" + passWord;
     }
 }

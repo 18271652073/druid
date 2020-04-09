@@ -233,7 +233,7 @@ public class DateUtils {
     /**
      * 根据年月获取该年月的第一天零时
      */
-    public static Date getMonthFirstDay(int year,int month) {
+    public static Date getMonthFirstDay(int year, int month) {
         Calendar a = Calendar.getInstance();
         a.set(Calendar.YEAR, year);
         a.set(Calendar.MONTH, month - 1);
@@ -260,7 +260,7 @@ public class DateUtils {
         // String s = DateUtils.str2DateFormat("1468466182000", "yyyy-MM-dd");
         // System.out.println(s);
         System.out.println(getDateAddOne("2018-02-28"));
-        System.out.println(getMonthFirstDay(2018,1));
+        System.out.println(getMonthFirstDay(2018, 1));
     }
 
     public static int formatYmdhmsm(Date date) {

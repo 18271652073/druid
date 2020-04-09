@@ -24,7 +24,7 @@ public class AESUtils {
     /**
      * AES 加密操作
      *
-     * @param content 待加密内容
+     * @param content  待加密内容
      * @param password 加密密码
      * @return 返回Base64转码后的加密数据
      */
@@ -107,7 +107,7 @@ public class AESUtils {
         String s1 = AESUtils.encrypt(s, "1234");
         System.out.println("s1:" + s1);
 
-        System.out.println("s2:"+AESUtils.decrypt(s1, "1234"));
+        System.out.println("s2:" + AESUtils.decrypt(s1, "1234"));
 
 
     }

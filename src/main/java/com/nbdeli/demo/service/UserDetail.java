@@ -6,7 +6,10 @@ package com.nbdeli.demo.service;
  */
 public interface UserDetail {
     String getUid();
+
     String getUrid();
+
     String getRrid();
+
     String getRname();
 }

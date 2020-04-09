@@ -8,8 +8,7 @@ import java.util.Map;
  * @author DuKaixiang
  * @date 2018/12/6.
  */
-public class PoolCache
-{
+public class PoolCache {
     //缓存超时时间 10分钟
     private static Long timeOutSecond = 600L;
 
@@ -18,21 +17,16 @@ public class PoolCache
 
     public static Map<String, ScanPool> cacheMap = new HashMap<String, ScanPool>();
 
-    static{
-        new Thread(new Runnable()
-        {
+    static {
+        new Thread(new Runnable() {
 
             @Override
-            public void run()
-            {
+            public void run() {
                 // TODO Auto-generated method stub
-                while (true)
-                {
-                    try
-                    {
-                        Thread.sleep(cleanIntervalSecond*1000);
-                    } catch (InterruptedException e)
-                    {
+                while (true) {
+                    try {
+                        Thread.sleep(cleanIntervalSecond * 1000);
+                    } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
@@ -40,14 +34,13 @@ public class PoolCache
                 }
             }
 
-            public void clean(){
-                if(cacheMap.keySet().size() > 0){
+            public void clean() {
+                if (cacheMap.keySet().size() > 0) {
                     Iterator<String> iterator = cacheMap.keySet().iterator();
-                    while (iterator.hasNext())
-                    {
+                    while (iterator.hasNext()) {
                         String key = iterator.next();
                         ScanPool pool = cacheMap.get(key);
-                        if(System.currentTimeMillis() - pool.getCreateTime() > timeOutSecond * 1000){
+                        if (System.currentTimeMillis() - pool.getCreateTime() > timeOutSecond * 1000) {
                             cacheMap.remove(key);
                         }
                     }

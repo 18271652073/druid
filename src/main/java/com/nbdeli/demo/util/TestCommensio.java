@@ -21,18 +21,19 @@ public class TestCommensio {
     public static void test01() throws IOException {
         File file = new File("E:\\count.txt");
         List<String> lines = FileUtils.readLines(file);
-        int i=0;
-        for(String str:lines){
+        int i = 0;
+        for (String str : lines) {
             i++;
             System.out.println("第 " + i + " 行数据为：\t" + str);
         }
-        i=9;//获取指定行
-        System.out.println("第 " + i + " 行数据为：："+lines.get(i-1));
-        System.out.println("第 " + i + " 行数据为：："+lines.get(i-1));
+        i = 9;//获取指定行
+        System.out.println("第 " + i + " 行数据为：：" + lines.get(i - 1));
+        System.out.println("第 " + i + " 行数据为：：" + lines.get(i - 1));
     }
 
     /**
      * 关注 FileUtils.writeStringToFile 方法
+     *
      * @throws IOException
      */
 //    @Test
@@ -49,20 +50,21 @@ public class TestCommensio {
          * 参数 2：写入文件的字符串
          * 参数 3： true 表示追加，加在后面
          */
-        FileUtils.writeStringToFile(file,str+ENTER,true);
+        FileUtils.writeStringToFile(file, str + ENTER, true);
     }
 
     public static void myRead() throws IOException {
         File file = new File("E:\\count.txt");
         List<String> lines = FileUtils.readLines(file);
-        int i=0;
-        for(String str:lines){
+        int i = 0;
+        for (String str : lines) {
             i++;
             System.out.println("第 " + i + " 行数据为：\t" + str);
         }
-        i=9;//获取指定行
-        System.out.println("第 " + i + " 行数据为："+lines.get(i-1));
+        i = 9;//获取指定行
+        System.out.println("第 " + i + " 行数据为：" + lines.get(i - 1));
     }
+
     public static void main(String[] args) throws IOException {
         test01();
     }

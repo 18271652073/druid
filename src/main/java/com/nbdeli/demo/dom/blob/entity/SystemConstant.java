@@ -6,7 +6,8 @@ import java.util.Date;
 
 /**
  * t_system_constant
- * @author 
+ *
+ * @author
  */
 public class SystemConstant implements Serializable {
     private Integer id;
@@ -134,16 +135,16 @@ public class SystemConstant implements Serializable {
         }
         SystemConstant other = (SystemConstant) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getConstantType() == null ? other.getConstantType() == null : this.getConstantType().equals(other.getConstantType()))
-            && (this.getTypeName() == null ? other.getTypeName() == null : this.getTypeName().equals(other.getTypeName()))
-            && (this.getConstantKey() == null ? other.getConstantKey() == null : this.getConstantKey().equals(other.getConstantKey()))
-            && (this.getConstantValue() == null ? other.getConstantValue() == null : this.getConstantValue().equals(other.getConstantValue()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
-            && (this.getAddNo() == null ? other.getAddNo() == null : this.getAddNo().equals(other.getAddNo()))
-            && (this.getAddTime() == null ? other.getAddTime() == null : this.getAddTime().equals(other.getAddTime()))
-            && (this.getUpdateNo() == null ? other.getUpdateNo() == null : this.getUpdateNo().equals(other.getUpdateNo()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (Arrays.equals(this.getConstantName(), other.getConstantName()));
+                && (this.getConstantType() == null ? other.getConstantType() == null : this.getConstantType().equals(other.getConstantType()))
+                && (this.getTypeName() == null ? other.getTypeName() == null : this.getTypeName().equals(other.getTypeName()))
+                && (this.getConstantKey() == null ? other.getConstantKey() == null : this.getConstantKey().equals(other.getConstantKey()))
+                && (this.getConstantValue() == null ? other.getConstantValue() == null : this.getConstantValue().equals(other.getConstantValue()))
+                && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+                && (this.getAddNo() == null ? other.getAddNo() == null : this.getAddNo().equals(other.getAddNo()))
+                && (this.getAddTime() == null ? other.getAddTime() == null : this.getAddTime().equals(other.getAddTime()))
+                && (this.getUpdateNo() == null ? other.getUpdateNo() == null : this.getUpdateNo().equals(other.getUpdateNo()))
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+                && (Arrays.equals(this.getConstantName(), other.getConstantName()));
     }
 
     @Override

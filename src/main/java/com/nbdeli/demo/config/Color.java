@@ -10,11 +10,13 @@ public enum Color {
     private String name;
     private int index;
 
-    public static Color[] ALL = {RED, GREEN,BLANK,YELLO};
+    public static Color[] ALL = {RED, GREEN, BLANK, YELLO};
+
     private Color(String name, int index) {
         this.name = name;
         this.index = index;
     }
+
     // 普通方法
     public static String getName(int index) {
         for (Color c : Color.values()) {
@@ -24,6 +26,7 @@ public enum Color {
         }
         return null;
     }
+
     //覆盖方法
 //    @Override
 //    public String toString() {
@@ -33,12 +36,15 @@ public enum Color {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public int getIndex() {
         return index;
     }
+
     public void setIndex(int index) {
         this.index = index;
     }

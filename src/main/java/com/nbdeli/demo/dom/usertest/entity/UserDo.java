@@ -10,7 +10,8 @@ import java.io.Serializable;
 
 /**
  * user
- * @author 
+ *
+ * @author
  */
 @Entity
 @Table(name = "user")

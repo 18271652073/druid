@@ -11,8 +11,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class SHAUtil {
 
-    public static String hamcsha1(byte[] data, byte[] key)
-    {
+    public static String hamcsha1(byte[] data, byte[] key) {
         try {
             SecretKeySpec signingKey = new SecretKeySpec(key, "HmacSHA1");
             Mac mac = Mac.getInstance("HmacSHA1");
@@ -26,11 +25,10 @@ public class SHAUtil {
         return null;
     }
 
-    public static String byte2hex(byte[] b)
-    {
+    public static String byte2hex(byte[] b) {
         StringBuilder hs = new StringBuilder();
         String stmp;
-        for (int n = 0; b!=null && n < b.length; n++) {
+        for (int n = 0; b != null && n < b.length; n++) {
             stmp = Integer.toHexString(b[n] & 0XFF);
             if (stmp.length() == 1)
                 hs.append('0');

@@ -13,15 +13,17 @@ import java.io.IOException;
 @SpringBootTest
 public class DruidApplicationTests {
 
-	@Autowired
-	private SystemConstantService systemConstantService;
-	@Test
-	public void contextLoads() throws IOException {
-		System.out.println(systemConstantService.insertEntity()==1?"导入成功！":"失败！");
-	}
-	@Test
-	public void contextLoads1() throws IOException {
-		System.out.println(systemConstantService.selectBlob(1));
-	}
+    @Autowired
+    private SystemConstantService systemConstantService;
+
+    @Test
+    public void contextLoads() throws IOException {
+        System.out.println(systemConstantService.insertEntity() == 1 ? "导入成功！" : "失败！");
+    }
+
+    @Test
+    public void contextLoads1() throws IOException {
+        System.out.println(systemConstantService.selectBlob(1));
+    }
 
 }
